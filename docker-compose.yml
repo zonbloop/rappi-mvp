@@ -91,5 +91,25 @@ services:
       - |
         superset run -h 0.0.0.0 -p 8088
 
+  # One-shot bootstrap to create DB + dataset + charts + dashboard via API.
+  # Run manually: `docker compose run --rm superset-bootstrap`
+  superset-bootstrap:
+    build:
+      context: ./superset
+      dockerfile: Dockerfile
+    container_name: superset-bootstrap
+    depends_on:
+      superset:
+        condition: service_started
+    environment:
+      SUPERSET_URL: http://superset:8088
+      SUPERSET_ADMIN_USERNAME: ${SUPERSET_ADMIN_USERNAME:?SUPERSET_ADMIN_USERNAME is required}
+      SUPERSET_ADMIN_PASSWORD: ${SUPERSET_ADMIN_PASSWORD:?SUPERSET_ADMIN_PASSWORD is required}
+      SUPERSET_MVP_SQLALCHEMY_URI: postgresql+psycopg2://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-rappi_tec}
+    volumes:
+      - ./superset/bootstrap_mvp_dashboard.py:/app/pythonpath/bootstrap_mvp_dashboard.py:ro
+    command: ["python", "/app/pythonpath/bootstrap_mvp_dashboard.py"]
+    restart: "no"
+
 volumes:
   postgres_data:
