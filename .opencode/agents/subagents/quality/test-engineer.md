@@ -2,7 +2,7 @@
 name: tester
 description: Test engineer. Writes and runs tests to verify code correctness and coverage.
 mode: subagent
-model: openai/gpt-5.2-codex
+model: openai/gpt-5.3-codex
 tools:
   bash: true
   read: true

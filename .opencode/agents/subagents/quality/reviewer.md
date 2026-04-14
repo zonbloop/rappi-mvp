@@ -2,7 +2,7 @@
 name: reviewer
 description: Code reviewer. Reviews code changes for quality, best practices, and potential issues.
 mode: subagent
-model: openai/gpt-5.2-codex
+model: openai/gpt-5.3-codex
 tools:
   bash: false
   read: true

@@ -2,7 +2,7 @@
 name: planner
 description: Task decomposer. Breaks down architectural designs into atomic, executable tasks for implementation agents.
 mode: subagent
-model: openai/gpt-5.2-codex
+model: openai/gpt-5.3-codex
 tools:
   bash: false
   read: true

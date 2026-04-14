@@ -2,7 +2,7 @@
 name: coder
 description: Code writer. Creates new files, functions, classes based on design and task specifications.
 mode: subagent
-model: openai/gpt-5.2-codex
+model: openai/gpt-5.3-codex
 tools:
   bash: true
   read: true

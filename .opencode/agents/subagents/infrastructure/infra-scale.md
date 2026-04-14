@@ -2,7 +2,7 @@
 name: devops
 description: DevOps engineer. Manages CI/CD pipelines, Docker configurations, deployment scripts, and infrastructure.
 mode: subagent
-model: openai/gpt-5.2-codex
+model: openai/gpt-5.3-codex
 tools:
   bash: true
   read: true
